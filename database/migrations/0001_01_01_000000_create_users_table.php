@@ -14,11 +14,28 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone_no')->unique();
+            $table->timestamp('phone_no_verified_at')->nullable();
+            $table->string('avatar_url')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('province_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->unsignedBigInteger('sub_locality_id')->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->string('firebase_id')->nullable();
+            $table->boolean('user_verified')->default(false);
+            $table->timestamp('user_verified_at')->nullable();
+            $table->enum('role', ['user', 'admin', 'vendor'])->default('user');
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->date('dob')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
