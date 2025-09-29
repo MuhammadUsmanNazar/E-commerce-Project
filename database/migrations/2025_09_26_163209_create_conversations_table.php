@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('listing_id'); // later add FK
-            $table->foreignId('seller_id');  // later add FK
-            $table->foreignId('buyer_id');   // later add FK
+            $table->foreignId('listing_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('seller_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('buyer_id')->constrained('users')->cascadeOnDelete();
             $table->string('room_id')->unique();
             $table->timestamp('started_at')->nullable();
-            $table->boolean('status')->default(true); // active/inactive
+            $table->enum('status', ['active', 'closed', 'archived', 'blocked'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });
