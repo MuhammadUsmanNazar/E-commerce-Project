@@ -40,53 +40,53 @@
 @endpush
 
 @section('content')
-<div class="container d-flex justify-content-center align-items-center min-vh-100 py-2">
-    <div class="card shadow-sm border-0 p-4" style="max-width: 520px; width: 100%; border-radius: 12px;">
-        <!-- Heading -->
-        <div class="text-center mb-4">
-            <h3 class="fw-bold">Sign in</h3>
-            <p class="text-muted mb-0">Login to continue</p>
-        </div>
-
-        <!-- Login Form -->
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <input type="email" class="form-control border-0 border-bottom rounded-0 shadow-none"
-                    name="email" placeholder="Email" required>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 py-2">
+        <div class="card shadow-sm border-0 p-4" style="max-width: 520px; width: 100%; border-radius: 12px;">
+            <!-- Heading -->
+            <div class="text-center mb-4">
+                <h3 class="fw-bold">Sign in</h3>
+                <p class="text-muted mb-0">Login to continue</p>
             </div>
 
-            <div class="mb-3">
-                <input type="password" class="form-control border-0 border-bottom rounded-0 shadow-none"
-                    name="password" placeholder="Password" required>
+            <!-- Login Form -->
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <input type="email" class="form-control border-0 border-bottom rounded-0 shadow-none"
+                        name="email" placeholder="Email" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" class="form-control border-0 border-bottom rounded-0 shadow-none"
+                        name="password" placeholder="Password" required>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                    <label class="form-check-label small" for="remember">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+
+            <!-- Divider -->
+            <div class="d-flex align-items-center my-4">
+                <hr class="flex-grow-1">
+                <span class="mx-2 small text-muted">ACCESS QUICKLY</span>
+                <hr class="flex-grow-1">
             </div>
 
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="remember">
-                <label class="form-check-label small" for="remember">Remember me</label>
+            <!-- Social Login -->
+            <div class="d-flex justify-content-between">
+                <a href="{{ url('/auth/google') }}" class="btn btn-outline-secondary w-100 me-2 text-white">Google</a>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-        </form>
-
-        <!-- Divider -->
-        <div class="d-flex align-items-center my-4">
-            <hr class="flex-grow-1">
-            <span class="mx-2 small text-muted">ACCESS QUICKLY</span>
-            <hr class="flex-grow-1">
-        </div>
-
-        <!-- Social Login -->
-        <div class="d-flex justify-content-between">
-            <a href="{{ url('/auth/google') }}" class="btn btn-outline-secondary w-100 me-2 text-white">Google</a>
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center mt-4">
-            <small class="text-muted">Don't have an account? 
-                <a href="{{ route('register') }}" class="text-decoration-none">Sign up</a>
-            </small>
+            <!-- Footer -->
+            <div class="text-center mt-4">
+                <small class="text-muted">Don't have an account? 
+                    <a href="{{ route('register') }}" class="text-decoration-none">Sign up</a>
+                </small>
+            </div>
         </div>
     </div>
-</div>
 @endsection

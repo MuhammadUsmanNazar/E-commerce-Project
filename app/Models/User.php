@@ -19,8 +19,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'slug',
         'email',
         'password',
+        'phone_no',
+        'gender',
+        'dob',
+        'country_id',
+        'province_id',
+        'city_id',
+        'sub_locality_id',
     ];
 
     /**
@@ -44,5 +52,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function oauthProviders()
+    {
+        return $this->hasMany(OauthProvider::class);
     }
 }
